@@ -1,14 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, Provider } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes, UrlSerializer } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbDatepickerModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { firebase, FirebaseUIModule } from 'firebaseui-angular';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { environment } from '../environments/environment';
 import { Intent } from '../types/api-request';
@@ -30,6 +27,7 @@ import { MaintainerPageComponent } from './pages-maintainer/maintainer-page.comp
 import { StaticPageComponent } from './pages-static/static-page.component';
 import { StudentPageComponent } from './pages-student/student-page.component';
 import { PublicPageComponent } from './public-page.component';
+import firebase from 'firebase/compat/app';
 
 const customUrlSerializer: CustomUrlSerializer = new CustomUrlSerializer();
 const customUrlSerializerProvider: Provider = {
@@ -139,18 +137,16 @@ if (environment.maintenance) {
   ];
 }
 
-const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInOptions: [
-    {
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      scopes: ['https://www.googleapis.com/auth/userinfo.email'],
-    },
-    {
-      requireDisplayName: false,
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    },
-  ],
+const firebaseConfig = {
+  apiKey: 'AIzaSyBjvTGcPWgDf_7JxwdyXgjClkBSw9YPMNo',
+  authDomain: 'teammates-john-354208.firebaseapp.com',
+  projectId: 'teammates-john-354208',
+  storageBucket: 'teammates-john-354208.appspot.com',
+  messagingSenderId: '693245700352',
+  appId: '1:693245700352:web:f3d2e5dd5568c7cf0debe5',
+  measurementId: 'G-32FP06NV3X',
 };
+firebase.initializeApp(firebaseConfig);
 
 /**
  * Root module.
@@ -189,9 +185,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FormsModule,
     NgbDatepickerModule,
     SessionEditFormModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
   ],
   providers: [customUrlSerializerProvider],
   bootstrap: [AppComponent],
