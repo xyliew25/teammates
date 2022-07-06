@@ -1,0 +1,19 @@
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="isSignInLinkEmailSent">
+  <p>Sign in link email sent.</p>
+</div>
+<div *ngIf="!isSignInWithEmail">
+  <button>Sign in with Google</button>
+  <button (click)="isSignInWithEmail=true">Sign in with email</button>
+</div>
+<div *ngIf="isSignInWithEmail && !isSignInLinkEmailSent">
+  <form>
+    <label for="email" style="width: 3em">Email:</label>
+    <input type="text" name="email" id="email" [ngModel]="email" (ngModelChange)="triggerEmailChange($event)">
+    <button (click)="isSignInWithEmail=false">Cancel</button>
+    <button (click)="signIn()">Sign in</button>
+  </form>
+</div>
+<div>
+  <button (click)="logout()">Logout</button>
+</div>

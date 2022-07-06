@@ -13,6 +13,15 @@ export const environment: any = {
   backendUrl: 'http://localhost:8080',
   frontendUrl: 'http://localhost:4200',
   withCredentials: true,
+  firebaseConfig: {
+    apiKey: 'AIzaSyBjvTGcPWgDf_7JxwdyXgjClkBSw9YPMNo',
+    authDomain: 'teammates-john-354208.firebaseapp.com',
+    projectId: 'teammates-john-354208',
+    storageBucket: 'teammates-john-354208.appspot.com',
+    messagingSenderId: '693245700352',
+    appId: '1:693245700352:web:f3d2e5dd5568c7cf0debe5',
+    measurementId: 'G-32FP06NV3X',
+  },
 };
 
 /*
