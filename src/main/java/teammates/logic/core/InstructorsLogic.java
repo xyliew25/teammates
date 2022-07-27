@@ -370,6 +370,21 @@ public final class InstructorsLogic {
     }
 
     /**
+     * Updates the associated googleId of an instructor to the new googleId.
+     */
+    public void updateInstructorGoogleId(String originalEmail, String courseId, String newGoogleId)
+            throws EntityDoesNotExistException {
+        try {
+            instructorsDb.updateInstructorByEmail(
+                    InstructorAttributes.updateOptionsWithEmailBuilder(courseId, originalEmail)
+                            .withGoogleId(newGoogleId)
+                            .build());
+        } catch (InvalidParametersException e) {
+            assert false : "Unexpected invalid parameter.";
+        }
+    }
+
+    /**
      * Checks if there are any other registered instructors that can modify instructors.
      * If there are none, the instructor currently being edited will be granted the privilege
      * of modifying instructors automatically.

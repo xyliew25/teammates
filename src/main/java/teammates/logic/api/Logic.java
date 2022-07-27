@@ -727,6 +727,21 @@ public class Logic {
     }
 
     /**
+     * Updates the googleId associated with the student to the new googleId.
+     *
+     * <br/>Preconditions: <br/>
+     * * All parameters are non-null.
+     */
+    public void updateStudentGoogleId(String originalEmail, String courseId, String newGoogleId)
+            throws EntityDoesNotExistException {
+        assert originalEmail != null;
+        assert courseId != null;
+        assert newGoogleId != null;
+
+        studentsLogic.updateStudentGoogleId(originalEmail, courseId, newGoogleId);
+    }
+
+    /**
      * Regenerates the registration key for the instructor with email address {@code email} in course {@code courseId}.
      *
      * @return the instructor attributes with the new registration key.
@@ -768,6 +783,18 @@ public class Logic {
         assert courseId != null;
 
         instructorsLogic.resetInstructorGoogleId(originalEmail, courseId);
+    }
+
+    /**
+     * Updates the associated googleId of an instructor to the new googleId.
+     */
+    public void updateInstructorGoogleId(String originalEmail, String courseId, String newGoogleId)
+            throws EntityDoesNotExistException {
+        assert originalEmail != null;
+        assert courseId != null;
+        assert newGoogleId != null;
+
+        instructorsLogic.updateInstructorGoogleId(originalEmail, courseId, newGoogleId);
     }
 
     /**

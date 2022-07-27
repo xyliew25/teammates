@@ -88,6 +88,13 @@ export class AccountService {
   }
 
   /**
+   * Resets all accounts of logged-in user.
+   */
+  resetAllAccountsOfLoggedInUser(): Observable<MessageOutput> {
+    return this.httpRequestService.put(ResourceEndpoints.ACCOUNTS_RESET_OWN);
+  }
+
+  /**
    * Gets an account by calling API.
    */
   getAccount(googleId: string): Observable<Account> {

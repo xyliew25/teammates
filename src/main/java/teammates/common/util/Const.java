@@ -321,6 +321,8 @@ public final class Const {
         public static final String AUTH_REGKEY = URI_PREFIX + "/auth/regkey";
         public static final String ACCOUNT = URI_PREFIX + "/account";
         public static final String ACCOUNT_RESET = URI_PREFIX + "/account/reset";
+        public static final String ACCOUNT_RESET_OWN = URI_PREFIX + "/account/reset/own";
+        public static final String ACCOUNTS_RESET_OWN = URI_PREFIX + "/accounts/reset/own";
         public static final String ACCOUNT_REQUEST = URI_PREFIX + "/account/request";
         public static final String ACCOUNT_REQUEST_RESET = ACCOUNT_REQUEST + "/reset";
         public static final String ACCOUNTS = URI_PREFIX + "/accounts";

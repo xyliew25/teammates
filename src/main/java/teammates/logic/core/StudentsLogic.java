@@ -281,6 +281,21 @@ public final class StudentsLogic {
     }
 
     /**
+     * Updates the googleId associated with the student to the new googleId.
+     */
+    public void updateStudentGoogleId(String originalEmail, String courseId, String newGoogleId)
+            throws EntityDoesNotExistException {
+        try {
+            updateStudentCascade(
+                    StudentAttributes.updateOptionsBuilder(courseId, originalEmail)
+                            .withGoogleId(newGoogleId)
+                            .build());
+        } catch (InvalidParametersException | EntityAlreadyExistsException e) {
+            assert false : "Updating google ID shall not cause: " + e.getMessage();
+        }
+    }
+
+    /**
      * Regenerates the registration key for the student with email address {@code email} in course {@code courseId}.
      *
      * @return the student attributes with the new registration key.
